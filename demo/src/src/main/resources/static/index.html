@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot + HTML</title>
+</head>
+<body>
+
+    <h1>Spring Boot + HTML Interaction</h1>
+    <button onclick="fetchMessage()">Get Message</button>
+    <p id="message"></p>
+
+    <script>
+        function fetchMessage() {
+            fetch('/api/message')  // Calls the Java backend
+                .then(response => response.text())  // Convert response to text
+                .then(data => {
+                    document.getElementById('message').innerText = data; // Display message
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+    </script>
+
+</body>
+</html>
